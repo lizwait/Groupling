@@ -1,0 +1,24 @@
+#root {
+    padding-left: 20%;
+    padding-right: 20%;
+    vertical-align: middle;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 20%;
+}
+#pin {
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input {
+    text-align:center;
+ }
+
+#new-event {
+    margin-top: 15%;
+}
+
+button {
+    box-shadow: 4px 4px #D3D3D3;
+}
