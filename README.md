@@ -8,6 +8,7 @@ Using a shareable document is usually the route we take. Having a webapp dedicat
 * **Shareable Link** Easy to share link to enable users to quickly get involved.
 * **PIN Login** Users won't have to remember a username/password. A PIN will be shared with them to easily login.
 * **Database driven** Using Firebase, the webapp will capture user information and aggregate it in a useful manner.
+* **Google Maps** I will be incorporating Google API to include various personalized locations on the app.
 
 ### Technologies
 * JavaScript
