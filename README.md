@@ -16,6 +16,7 @@ Using a shareable document is usually the route we take. Having a webapp dedicat
 * ReactJS
 * Firebase
 * Bootstrap
+* Google Maps API
 
 ### What I'll Have to Learn
 To create this project, I will have to learn the ReactJS framework. In addition to ReactJS, I will have the opportunity to use Firebase. I've played around a bit with Bootstrap previously but, this will give me the chance to really get comfortable with it. 
