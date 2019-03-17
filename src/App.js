@@ -11,7 +11,7 @@ class App extends Component {
         <main>
           <Switch>
             <Route exact path='/' component={Main}/>
-            <Route exact path='/' component={NewEvent}/>
+            <Route exact path='/NewEvent' component={NewEvent}/>
           </Switch>
         </main>
       </BrowserRouter>

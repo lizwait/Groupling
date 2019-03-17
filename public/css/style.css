@@ -1,4 +1,4 @@
-#root {
+#main {
     padding-left: 20%;
     padding-right: 20%;
     vertical-align: middle;
@@ -15,10 +15,24 @@ input {
     text-align:center;
  }
 
-#new-event {
+#new-event-button {
     margin-top: 15%;
 }
 
 button {
     box-shadow: 4px 4px #D3D3D3;
+}
+
+#pin-button {
+    margin-left: 65%;
+}
+
+#pin-number {
+    font-weight: bold;
+    font-size: 200%;
+    margin-left: 64%;
+}
+
+#activities {
+    padding-top: 7%;
 }
