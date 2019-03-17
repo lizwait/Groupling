@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import NewEvent from './components/NewEvent';
+import Main from './components/Main';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
       <BrowserRouter>
         <main>
           <Switch>
-            <Route exact path='/' component={NewEvent}/>
+            <Route exact path='/' component={Main}/>
           </Switch>
         </main>
       </BrowserRouter>

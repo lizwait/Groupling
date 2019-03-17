@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-class NewEvent extends Component {
+class Main extends Component {
     render() {
       return (
         <div>
@@ -32,4 +32,4 @@ class NewEvent extends Component {
     }
   }
 
-  export default NewEvent;
+  export default Main;
