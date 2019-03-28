@@ -1,11 +1,38 @@
 import React, { Component } from 'react';
 import '../App.css';
+import firebase from '../firebase.js'; 
 
 class NewEvent extends Component {
     constructor(props) {
         super(props);
-        this.state = {pin: ''};
+        this.state = {
+            pin: '',
+            stayWhere: ''
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this); // <-- add this line
     }
+
+    handleChange(event) {
+        this.setState({
+          [event.target.name]: event.target.value
+        });
+      }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        const itemsRef = firebase.database().ref('groups');
+        const item = {
+          stayWhere: this.state.stayWhere,
+          
+        }
+        itemsRef.push(item);
+        // this.setState({
+        //   currentItem: '',
+        //   username: ''
+        // });
+      }
+
 
     render() {
         return (
@@ -20,15 +47,17 @@ class NewEvent extends Component {
                 </div>
                 <div id="stay">
                     <h2>Stay</h2>
-                    <label htmlFor="exampleFormControlTextarea1">Where</label>
-                    <input className="form-control" type="text" placeholder="Link" />
-                    <label htmlFor="exampleFormControlTextarea1">When</label>
-                    <input className="form-control" type="text" placeholder="Month, Day-Day, Year" />
-                    <label htmlFor="exampleFormControlTextarea1">Contact</label>
-                    <input className="form-control" type="text" placeholder="Phone Number" />
-                    <label htmlFor="exampleFormControlTextarea1">Notes</label>
-                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    <button type="button" className="btn btn-light">Save</button>
+                    <form onSubmit={this.handleSubmit}>
+                        <label htmlFor="exampleFormControlTextarea1">Where</label>
+                        <input className="form-control" type="text" placeholder="Link" name="stayWhere" onChange={this.handleChange} value={this.state.stayWhere} />
+                        <label htmlFor="exampleFormControlTextarea1">When</label>
+                        <input className="form-control" type="text" placeholder="Month, Day-Day, Year" />
+                        <label htmlFor="exampleFormControlTextarea1">Contact</label>
+                        <input className="form-control" type="text" placeholder="Phone Number" />
+                        <label htmlFor="exampleFormControlTextarea1">Notes</label>
+                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <button type="submit" className="btn btn-light">Save</button>
+                    </form>
                 </div>
                 <div id="activities">
                     <h2>Activities</h2>
@@ -48,7 +77,7 @@ class NewEvent extends Component {
                 </div>
                 <div id="group">
                     <h2>Group</h2>
-                    <table class="table table-sm">
+                    <table className="table table-sm">
                         <thead>
                             <tr>
                             <th scope="col">Name</th>
@@ -75,7 +104,7 @@ class NewEvent extends Component {
                             </tr>
                             <tr>
                             <th scope="row"></th>
-                            <td colspan="2"></td>
+                            <td colSpan="2"></td>
                             <td></td>
                             <td></td>
                             </tr>
