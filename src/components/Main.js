@@ -19,7 +19,7 @@ class Main extends Component {
                 <button type="button" className="btn btn-light">submit</button>
               </div>
               <div className="d-flex justify-content-center" id= "new-event-button">
-                <button type="button" className="btn btn-dark">new event</button>
+                <button type="button" className="btn btn-dark">new trip</button>
               </div>
             </form>
           </div>

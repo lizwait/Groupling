@@ -5,6 +5,18 @@
     font-family: 'Roboto', sans-serif;
     padding-top: 20%;
 }
+
+#formFormat {
+    padding-top: 8%;
+    padding-right: 40%;
+    padding-left: 5%;
+    font-family: 'Roboto', sans-serif;
+}
+
+#title {
+    font-family: 'Roboto', sans-serif;
+}
+
 #pin {
     width: 150px;
     margin-left: auto;
@@ -21,10 +33,6 @@ input {
 
 button {
     box-shadow: 4px 4px #D3D3D3;
-}
-
-#pin-button {
-    margin-left: 65%;
 }
 
 #pin-number {
