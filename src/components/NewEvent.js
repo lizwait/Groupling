@@ -7,7 +7,16 @@ class NewEvent extends Component {
         super(props);
         this.state = {
             pin: '',
-            stayWhere: ''
+            stayWhere: '',
+            stayWhen: '',
+            stayContact: '',
+            stayNotes: '',
+            activitiesActivity: '',
+            activitiesWhere: '',
+            activitiesDate: '',
+            activitiesTime: '',
+            activitiesContact: '',
+            activitiesNotes: '',
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this); // <-- add this line
@@ -23,8 +32,21 @@ class NewEvent extends Component {
         event.preventDefault();
         const itemsRef = firebase.database().ref('groups');
         const item = {
-          stayWhere: this.state.stayWhere,
-          
+          stay: {
+            where: this.state.stayWhere,
+            when: this.state.stayWhen,
+            contact: this.state.stayContact,
+            stay: this.state.stayContact,
+            notes: this.state.stayNotes,
+          },  
+          activities: {
+            activity: this.state.activitiesActivity,
+            where: this.state.activitiesWhere,
+            date: this.state.activitiesDate,
+            time: this.state.activitiesTime,
+            contact: this.state.activitiesContact,
+            notes: this.state.activitiesNotes,
+          }
         }
         itemsRef.push(item);
         // this.setState({
@@ -51,29 +73,31 @@ class NewEvent extends Component {
                             <label htmlFor="exampleFormControlTextarea1">Where</label>
                             <input className="form-control" type="text" placeholder="Link" name="stayWhere" onChange={this.handleChange} value={this.state.stayWhere} />
                             <label htmlFor="exampleFormControlTextarea1">When</label>
-                            <input className="form-control" type="text" placeholder="Month, Day-Day, Year" />
+                            <input className="form-control" type="text" placeholder="Month, Day-Day, Year" name="stayWhen" onChange={this.handleChange} value={this.state.stayWhen} />
                             <label htmlFor="exampleFormControlTextarea1">Contact</label>
-                            <input className="form-control" type="text" placeholder="Phone Number" />
+                            <input className="form-control" type="text" placeholder="Phone Number" name="stayContact" onChange={this.handleChange} value={this.state.stayContact} />
                             <label htmlFor="exampleFormControlTextarea1">Notes</label>
-                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="stayNotes" onChange={this.handleChange} value={this.state.stayNotes}></textarea>
                             <button type="submit" className="btn btn-light">save</button>
                         </form>
                     </div>
                     <div id="activities">
                         <h2>Activities</h2>
-                        <label htmlFor="exampleFormControlTextarea1">Activity</label>
-                        <input className="form-control" type="text" placeholder="Activity" />
-                        <label htmlFor="exampleFormControlTextarea1">Where</label>
-                        <input className="form-control" type="text" placeholder="Link" />
-                        <label htmlFor="exampleFormControlTextarea1">When</label>
-                        <input className="form-control" type="text" placeholder="Month, Day-Day, Year" />
-                        <label htmlFor="exampleFormControlTextarea1">Time</label>
-                        <input className="form-control" type="text" placeholder="0:00 AM/PM - 0:00 AM/PM" />
-                        <label htmlFor="exampleFormControlTextarea1">Contact</label>
-                        <input className="form-control" type="text" placeholder="Phone Number" />
-                        <label htmlFor="exampleFormControlTextarea1">Notes</label>
-                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        <button type="button" className="btn btn-light">add</button>
+                        <form onSubmit={this.handleSubmit}>
+                            <label htmlFor="exampleFormControlTextarea1"></label>
+                            <input className="form-control" type="text" placeholder="Activity" name="activitiesActivity" onChange={this.handleChange} value={this.state.activitiesActivity} />
+                            <label htmlFor="exampleFormControlTextarea1">Where</label>
+                            <input className="form-control" type="text" placeholder="Link" name="activitiesWhere" onChange={this.handleChange} value={this.state.activitiesLink} />
+                            <label htmlFor="exampleFormControlTextarea1">Date</label>
+                            <input className="form-control" type="text" placeholder="Month, Day-Day, Year" name="activitiesDate" onChange={this.handleChange} value={this.state.activitiesDate} />
+                            <label htmlFor="exampleFormControlTextarea1">Time</label>
+                            <input className="form-control" type="text" placeholder="0:00 AM/PM - 0:00 AM/PM" name="activitiesTime" onChange={this.handleChange} value={this.state.activitiesTime} />
+                            <label htmlFor="exampleFormControlTextarea1">Contact</label>
+                            <input className="form-control" type="text" placeholder="Phone Number" name="activitiesContact" onChange={this.handleChange} value={this.state.activitiesContact} />
+                            <label htmlFor="exampleFormControlTextarea1">Notes</label>
+                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="activitiesNotes" onChange={this.handleChange} value={this.state.activitiesNotes}></textarea>
+                            <button type="submit" className="btn btn-light">add</button>
+                        </form>
                     </div>
                     <div id="group">
                         <h2>Group</h2>
