@@ -17,6 +17,12 @@ class NewEvent extends Component {
             activitiesTime: '',
             activitiesContact: '',
             activitiesNotes: '',
+            groupName: '',
+            groupSocial: '',
+            groupContact: '',
+            groupFlightArrival: '',
+            groupFlightDeparture: '',
+            groupNotes: '',
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this); // <-- add this line
@@ -46,6 +52,14 @@ class NewEvent extends Component {
             time: this.state.activitiesTime,
             contact: this.state.activitiesContact,
             notes: this.state.activitiesNotes,
+          },
+          group: {
+            name: this.state.groupName,
+            social: this.state.groupSocial,
+            contact: this.state.groupContact,
+            flightArrival: this.state.groupFlightArrival,
+            flightDeparture: this.state.groupFlightDeparture,
+            notes: this.state.groupNotes,
           }
         }
         itemsRef.push(item);
@@ -73,9 +87,9 @@ class NewEvent extends Component {
                             <label htmlFor="exampleFormControlTextarea1">Where</label>
                             <input className="form-control" type="text" placeholder="Link" name="stayWhere" onChange={this.handleChange} value={this.state.stayWhere} />
                             <label htmlFor="exampleFormControlTextarea1">When</label>
-                            <input className="form-control" type="text" placeholder="Month, Day-Day, Year" name="stayWhen" onChange={this.handleChange} value={this.state.stayWhen} />
+                            <input className="form-control" type="date" placeholder="Month, Day-Day, Year" name="stayWhen" onChange={this.handleChange} value={this.state.stayWhen} />
                             <label htmlFor="exampleFormControlTextarea1">Contact</label>
-                            <input className="form-control" type="text" placeholder="Phone Number" name="stayContact" onChange={this.handleChange} value={this.state.stayContact} />
+                            <input className="form-control" type="number" placeholder="Phone Number" name="stayContact" onChange={this.handleChange} value={this.state.stayContact} />
                             <label htmlFor="exampleFormControlTextarea1">Notes</label>
                             <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="stayNotes" onChange={this.handleChange} value={this.state.stayNotes}></textarea>
                             <button type="submit" className="btn btn-light">save</button>
@@ -89,11 +103,11 @@ class NewEvent extends Component {
                             <label htmlFor="exampleFormControlTextarea1">Where</label>
                             <input className="form-control" type="text" placeholder="Link" name="activitiesWhere" onChange={this.handleChange} value={this.state.activitiesLink} />
                             <label htmlFor="exampleFormControlTextarea1">Date</label>
-                            <input className="form-control" type="text" placeholder="Month, Day-Day, Year" name="activitiesDate" onChange={this.handleChange} value={this.state.activitiesDate} />
+                            <input className="form-control" type="date" placeholder="Month, Day-Day, Year" name="activitiesDate" onChange={this.handleChange} value={this.state.activitiesDate} />
                             <label htmlFor="exampleFormControlTextarea1">Time</label>
-                            <input className="form-control" type="text" placeholder="0:00 AM/PM - 0:00 AM/PM" name="activitiesTime" onChange={this.handleChange} value={this.state.activitiesTime} />
+                            <input className="form-control" type="time" placeholder="0:00 AM/PM - 0:00 AM/PM" name="activitiesTime" onChange={this.handleChange} value={this.state.activitiesTime} />
                             <label htmlFor="exampleFormControlTextarea1">Contact</label>
-                            <input className="form-control" type="text" placeholder="Phone Number" name="activitiesContact" onChange={this.handleChange} value={this.state.activitiesContact} />
+                            <input className="form-control" type="number" placeholder="Phone Number" name="activitiesContact" onChange={this.handleChange} value={this.state.activitiesContact} />
                             <label htmlFor="exampleFormControlTextarea1">Notes</label>
                             <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="activitiesNotes" onChange={this.handleChange} value={this.state.activitiesNotes}></textarea>
                             <button type="submit" className="btn btn-light">add</button>
@@ -108,6 +122,7 @@ class NewEvent extends Component {
                                 <th scope="col">Social</th>
                                 <th scope="col">Phone</th>
                                 <th scope="col">Flight Arrival</th>
+                                <th scope="col">Flight Departure</th>
                                 <th scope="col">Notes</th>
                                 </tr>
                             </thead>
@@ -118,12 +133,6 @@ class NewEvent extends Component {
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                </tr>
-                                <tr>
-                                <th scope="row">2</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
                                 <td></td>
                                 </tr>
                                 <tr>
@@ -131,26 +140,26 @@ class NewEvent extends Component {
                                 <td colSpan="2"></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
                                 </tr>
                             </tbody>
                             </table>
                         <h4>New Entry</h4>
-                        <label htmlFor="exampleFormControlTextarea1">Name</label>
-                        <input className="form-control" type="text" placeholder="Name" />
-                        <label htmlFor="exampleFormControlTextarea1">Social</label>
-                        <input className="form-control" type="text" placeholder="Link" />
-                        <span>
-                        <input type="radio" name="gender" value="male" /> Twitter
-                        <input type="radio" name="gender" value="female" /> GitHub
-                        <input type="radio" name="gender" value="other" /> Instagram <br />
-                        </span>
-                        <label htmlFor="exampleFormControlTextarea1">Phone Number</label>
-                        <input className="form-control" type="text" placeholder="+1-333-555-1234" />
-                        <label htmlFor="exampleFormControlTextarea1">Flight Arrival</label>
-                        <input className="form-control" type="text" placeholder="Day, Time" />
-                        <label htmlFor="exampleFormControlTextarea1">Notes</label>
-                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        <button type="button" className="btn btn-light">add</button>
+                        <form onSubmit={this.handleSubmit}>
+                            <label htmlFor="exampleFormControlTextarea1">Name</label>
+                            <input className="form-control" type="text" placeholder="Name" name="groupName" onChange={this.handleChange} value={this.state.groupName}/>
+                            <label htmlFor="exampleFormControlTextarea1">Social</label>
+                            <input className="form-control" type="text" placeholder="Link" name="groupSocial" onChange={this.handleChange} value={this.state.groupSocial}/>
+                            <label htmlFor="exampleFormControlTextarea1">Contact</label>
+                            <input className="form-control" type="number" placeholder="+1-333-555-1234" name="groupContact" onChange={this.handleChange} value={this.state.groupContact}/>
+                            <label htmlFor="exampleFormControlTextarea1">Flight Arrival</label>
+                            <input className="form-control" type="text" placeholder="Date, Time" name="groupFlightArrival" onChange={this.handleChange} value={this.state.groupFlightArrival}/>
+                            <label hrmlFor="exampleFromControlTextarea1">Flight Departure</label>
+                            <input className="form-control" type="text" placeholder="Date, Time" name="groupFlightDeparture" onChange={this.handleChange} value={this.state.groupFlightDeparture}/>
+                            <label htmlFor="exampleFormControlTextarea1">Notes</label>
+                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="groupNotes" onChange={this.handleChange} value={this.state.groupNotes}></textarea>
+                            <button type="submit" className="btn btn-light">add</button>
+                        </form>
                     </div>
                 </div>
             </div>
