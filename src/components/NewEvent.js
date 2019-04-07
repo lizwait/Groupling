@@ -28,7 +28,8 @@ class NewEvent extends Component {
             }]
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this); // <-- add this line
+        this.handleSubmit = this.handleSubmit.bind(this); 
+        this.handleAddGroup = this.handleAddGroup.bind(this);
     }
 
     handleChange(event) {
@@ -56,18 +57,27 @@ class NewEvent extends Component {
             contact: this.state.activitiesContact,
             notes: this.state.activitiesNotes,
           },
-          group: {
-            name: this.state.groupName,
-            social: this.state.groupSocial,
-            contact: this.state.groupContact,
-            flightArrival: this.state.groupFlightArrival,
-            flightDeparture: this.state.groupFlightDeparture,
-            notes: this.state.groupNotes,
-          }
+          group: this.state.group,
         }
         itemsRef.push(item);
       }
 
+    handleAddGroup() {
+        this.setState(function(state, props) {
+            state.group.push({
+                groupName: state.groupName,
+                groupSocial: state.groupSocial,
+                groupContact: state.groupContact,
+                groupFlightArrival: state.groupFlightArrival,
+                groupFlightDeparture: state.groupFlightDeparture,
+                groupNotes: state.groupNotes,
+            })
+
+            return {
+                group: state.group
+            };
+        });
+    }
 
     render() {
         return (
@@ -117,7 +127,7 @@ class NewEvent extends Component {
                         <Table data={this.state.group} />
 
                         <h4>New Entry</h4>
-                        <form onSubmit={this.handleSubmit}>
+                        <form>
                             <label htmlFor="exampleFormControlTextarea1">Name</label>
                             <input className="form-control" type="text" placeholder="Name" name="groupName" onChange={this.handleChange} value={this.state.groupName}/>
                             <label htmlFor="exampleFormControlTextarea1">Social</label>
@@ -130,7 +140,7 @@ class NewEvent extends Component {
                             <input className="form-control" type="text" placeholder="Date, Time" name="groupFlightDeparture" onChange={this.handleChange} value={this.state.groupFlightDeparture}/>
                             <label htmlFor="exampleFormControlTextarea1">Notes</label>
                             <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="groupNotes" onChange={this.handleChange} value={this.state.groupNotes}></textarea>
-                            <button type="submit" className="btn btn-light">add</button>
+                            <button type="button" className="btn btn-light" onClick={this.handleAddGroup}>add</button>
                         </form>
                     </div>
                 </div>
