@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import Table from './Table';
 import firebase from '../firebase.js'; 
 
 class NewEvent extends Component {
@@ -17,12 +18,14 @@ class NewEvent extends Component {
             activitiesTime: '',
             activitiesContact: '',
             activitiesNotes: '',
-            groupName: '',
-            groupSocial: '',
-            groupContact: '',
-            groupFlightArrival: '',
-            groupFlightDeparture: '',
-            groupNotes: '',
+            group: [{
+                groupName: '',
+                groupSocial: '',
+                groupContact: '',
+                groupFlightArrival: '',
+                groupFlightDeparture: '',
+                groupNotes: '',
+            }]
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this); // <-- add this line
@@ -63,10 +66,6 @@ class NewEvent extends Component {
           }
         }
         itemsRef.push(item);
-        // this.setState({
-        //   currentItem: '',
-        //   username: ''
-        // });
       }
 
 
@@ -115,35 +114,8 @@ class NewEvent extends Component {
                     </div>
                     <div id="group">
                         <h2>Group</h2>
-                        <table className="table table-sm">
-                            <thead>
-                                <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Social</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">Flight Arrival</th>
-                                <th scope="col">Flight Departure</th>
-                                <th scope="col">Notes</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                <th scope="row">1</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                </tr>
-                                <tr>
-                                <th scope="row"></th>
-                                <td colSpan="2"></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                </tr>
-                            </tbody>
-                            </table>
+                        <Table data={this.state.group} />
+
                         <h4>New Entry</h4>
                         <form onSubmit={this.handleSubmit}>
                             <label htmlFor="exampleFormControlTextarea1">Name</label>
