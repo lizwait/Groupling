@@ -8,14 +8,14 @@ class Table extends React.Component {
         const {
             data
         } = this.props;
-        const rows = data.map((data) =>
-            <tr>
+        const rows = data.map((data, index) =>
+            <tr key={index}>
                 <td key={data.groupName}>{data.groupName}</td>
                 <td key={data.groupSocial}>{data.groupSocial}</td>
                 <td key={data.groupContact}>{data.groupContact}</td>
                 <td key={data.groupFlightArrival}>{data.groupFlightArrival}</td>
                 <td key={data.groupFlightDeparture}>{data.groupFlightDeparture}</td>
-                <td key={data.groupFlightDeparture}>{data.groupFlightDeparture}</td>
+                <td key={data.groupNotes}>{data.groupNotes}</td>
             </tr>
         );
 

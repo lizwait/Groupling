@@ -13,23 +13,25 @@ class NewEvent extends Component {
             stayContact: '',
             stayNotes: '',
             activitiesActivity: '',
+            activitiesLink: '',
             activitiesWhere: '',
             activitiesDate: '',
             activitiesTime: '',
             activitiesContact: '',
             activitiesNotes: '',
-            group: [{
-                groupName: '',
-                groupSocial: '',
-                groupContact: '',
-                groupFlightArrival: '',
-                groupFlightDeparture: '',
-                groupNotes: '',
-            }]
+            activity: [],
+            groupName: '',
+            groupSocial: '',
+            groupContact: '',
+            groupFlightArrival: '',
+            groupFlightDeparture: '',
+            groupNotes: '',
+            group: [],
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this); 
         this.handleAddGroup = this.handleAddGroup.bind(this);
+        this.handleAddActivity = this.handleAddActivity.bind(this);
     }
 
     handleChange(event) {
@@ -49,18 +51,39 @@ class NewEvent extends Component {
             stay: this.state.stayContact,
             notes: this.state.stayNotes,
           },  
-          activities: {
-            activity: this.state.activitiesActivity,
-            where: this.state.activitiesWhere,
-            date: this.state.activitiesDate,
-            time: this.state.activitiesTime,
-            contact: this.state.activitiesContact,
-            notes: this.state.activitiesNotes,
-          },
+          activities: this.state.activity,
           group: this.state.group,
         }
+
         itemsRef.push(item);
       }
+
+    handleAddActivity() {
+        this.setState(function(state, props) {
+            state.activity.push({
+                activitiesActivity: state.activitiesActivity,
+                activitiesLink: state.activitiesLink,
+                activitiesWhere: state.activitiesWhere,
+                activitiesDate: state.activitiesDate,
+                activitiesTime: state.activitiesTime,
+                activitiesContact: state.activitiesContact,
+                activitiesNotes: state.activitiesNotes,
+            })
+
+            return {
+                activity: state.activity
+            };
+        });
+
+        this.setState({ activitiesActivity: '' });
+        this.setState({ activitiesLink: '' });
+        this.setState({ activitiesWhere: '' });
+        this.setState({ activitiesDate: '' });
+        this.setState({ activitiesTime: '' });
+        this.setState({ activitiesContact: '' });
+        this.setState({ activitiesNotes: '' });
+        
+    }  
 
     handleAddGroup() {
         this.setState(function(state, props) {
@@ -77,6 +100,13 @@ class NewEvent extends Component {
                 group: state.group
             };
         });
+
+        this.setState({ groupName: '' });
+        this.setState({ groupSocial: '' });
+        this.setState({ groupContact: '' });
+        this.setState({ groupFlightArrival: '' });
+        this.setState({ groupFlightDeparture: '' });
+        this.setState({ groupNotes: '' });
     }
 
     render() {
@@ -106,11 +136,13 @@ class NewEvent extends Component {
                     </div>
                     <div id="activities">
                         <h2>Activities</h2>
-                        <form onSubmit={this.handleSubmit}>
+                        <form>
                             <label htmlFor="exampleFormControlTextarea1"></label>
                             <input className="form-control" type="text" placeholder="Activity" name="activitiesActivity" onChange={this.handleChange} value={this.state.activitiesActivity} />
                             <label htmlFor="exampleFormControlTextarea1">Where</label>
-                            <input className="form-control" type="text" placeholder="Link" name="activitiesWhere" onChange={this.handleChange} value={this.state.activitiesLink} />
+                            <input className="form-control" type="text" placeholder="Where" name="activitiesWhere" onChange={this.handleChange} value={this.state.activitiesWhere} />
+                            <label htmlFor="exampleFormControlTextarea1">Link</label>
+                            <input className="form-control" type="text" placeholder="Link" name="activitiesLink" onChange={this.handleChange} value={this.state.activitiesLink} />
                             <label htmlFor="exampleFormControlTextarea1">Date</label>
                             <input className="form-control" type="date" placeholder="Month, Day-Day, Year" name="activitiesDate" onChange={this.handleChange} value={this.state.activitiesDate} />
                             <label htmlFor="exampleFormControlTextarea1">Time</label>
@@ -119,7 +151,7 @@ class NewEvent extends Component {
                             <input className="form-control" type="number" placeholder="Phone Number" name="activitiesContact" onChange={this.handleChange} value={this.state.activitiesContact} />
                             <label htmlFor="exampleFormControlTextarea1">Notes</label>
                             <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="activitiesNotes" onChange={this.handleChange} value={this.state.activitiesNotes}></textarea>
-                            <button type="submit" className="btn btn-light">add</button>
+                            <button type="button" className="btn btn-light" onClick={this.handleAddActivity}>add</button>
                         </form>
                     </div>
                     <div id="group">
@@ -136,7 +168,7 @@ class NewEvent extends Component {
                             <input className="form-control" type="number" placeholder="+1-333-555-1234" name="groupContact" onChange={this.handleChange} value={this.state.groupContact}/>
                             <label htmlFor="exampleFormControlTextarea1">Flight Arrival</label>
                             <input className="form-control" type="text" placeholder="Date, Time" name="groupFlightArrival" onChange={this.handleChange} value={this.state.groupFlightArrival}/>
-                            <label hrmlFor="exampleFromControlTextarea1">Flight Departure</label>
+                            <label htmlFor="exampleFromControlTextarea1">Flight Departure</label>
                             <input className="form-control" type="text" placeholder="Date, Time" name="groupFlightDeparture" onChange={this.handleChange} value={this.state.groupFlightDeparture}/>
                             <label htmlFor="exampleFormControlTextarea1">Notes</label>
                             <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="groupNotes" onChange={this.handleChange} value={this.state.groupNotes}></textarea>
