@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Table extends React.Component {
+class GroupTable extends React.Component {
     constructor(props) {
       super(props);
     }
@@ -39,4 +39,4 @@ class Table extends React.Component {
     }
   }
 
-export default Table;
+export default GroupTable;
