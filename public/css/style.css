@@ -35,6 +35,11 @@ button {
     box-shadow: 4px 4px #D3D3D3;
 }
 
+#submitButton {
+    padding-top: 5%;
+    padding-left: 92%;
+}
+
 #pin-number {
     font-weight: bold;
     font-size: 200%;

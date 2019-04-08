@@ -10,9 +10,9 @@ class NewEvent extends Component {
         this.state = {
             pin: '',
             stayStay: '',
+            stayLink: '',
             stayCheckIn: '',
             stayCheckOut: '',
-            stayWhen: '',
             stayContact: '',
             stayNotes: '',
             activitiesActivity: '',
@@ -48,9 +48,10 @@ class NewEvent extends Component {
         event.preventDefault();
         const itemsRef = firebase.database().ref('groups');
         const item = {
+          pin: this.state.pin,  
           stay: {
             stay: this.state.stayStay,
-            where: this.state.stayWhere,
+            link: this.state.stayLink,
             checkin: this.state.stayCheckIn,
             checkout: this.state.stayCheckOut,
             contact: this.state.stayContact,
@@ -63,6 +64,14 @@ class NewEvent extends Component {
 
         itemsRef.push(item);
       }
+    
+    pin() {
+        this.setState({pin: (100000 + Math.floor(Math.random() * 900000))});
+    }
+
+    componentDidMount() {
+        this.pin();
+    }
 
     handleAddActivity() {
         this.setState(function(state, props) {
@@ -130,10 +139,10 @@ class NewEvent extends Component {
                 <div id="formFormat">
                     <div id="stay">
                         <h2>Stay</h2>
-                        <form onSubmit={this.handleSubmit}>
+                        <form>
                             <input className="form-control" type="text" placeholder="Name" name="stayStay" onChange={this.handleChange} value={this.state.stayStay} />
                             <label htmlFor="exampleFormControlTextarea1">Link</label>
-                            <input className="form-control" type="text" placeholder="Link" name="stayWhere" onChange={this.handleChange} value={this.state.stayWhere} />
+                            <input className="form-control" type="text" placeholder="Link" name="stayLink" onChange={this.handleChange} value={this.state.stayLink} />
                             <label htmlFor="exampleFormControlTextarea1">Check In</label>
                             <input className="form-control" type="datetime-local" placeholder="CheckIn" name="stayCheckIn" onChange={this.handleChange} value={this.state.stayCheckIn} />
                             <label htmlFor="exampleFormControlTextarea1">Check Out</label>
@@ -142,7 +151,6 @@ class NewEvent extends Component {
                             <input className="form-control" type="number" placeholder="Phone Number" name="stayContact" onChange={this.handleChange} value={this.state.stayContact} />
                             <label htmlFor="exampleFormControlTextarea1">Notes</label>
                             <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="stayNotes" onChange={this.handleChange} value={this.state.stayNotes}></textarea>
-                            <button type="submit" className="btn btn-light">save</button>
                         </form>
                     </div>
                     <div id="activities">
@@ -190,14 +198,16 @@ class NewEvent extends Component {
                             <button type="button" className="btn btn-light" onClick={this.handleAddGroup}>add</button>
                         </form>
                     </div>
+                    <div id="submitButton">
+                    <form onSubmit={this.handleSubmit}>
+                        <button type="submit" className="btn btn-light">save</button>
+                    </form>
+                    </div>
                 </div>
             </div>
         );
     }
 
-    pin() {
-        this.setState({pin: (100000 + Math.floor(Math.random() * 900000))});
-    }
 }
 
 export default NewEvent;
