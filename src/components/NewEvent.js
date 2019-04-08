@@ -131,10 +131,12 @@ class NewEvent extends Component {
             <div>
                 <div id="title">
                     <h1>Groupling</h1>
-                    <h4>New Event</h4>
+                    <h4>New Trip</h4>
                 </div>
-                <div>
-                    <div id="pin-number">{this.state.pin}</div>
+                <div id="pin-number">
+                    <h3>PIN</h3>
+                    <h5>Please keep for trip access.</h5>
+                    <div >{this.state.pin}</div>
                 </div>
                 <div id="formFormat">
                     <div id="stay">
