@@ -12,6 +12,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Main}/>
             <Route exact path='/NewEvent' component={NewEvent}/>
+            <Route exact path='/View' component={View}/>
           </Switch>
         </main>
       </BrowserRouter>
