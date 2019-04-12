@@ -5,11 +5,11 @@ const API_KEY =`${process.env.REACT_APP_API_KEY_FIREBASE}`;
 
 const config = {
         apiKey: API_KEY,
-        authDomain: "groupling.firebaseapp.com",
-        databaseURL: "https://groupling.firebaseio.com",
-        projectId: "groupling",
-        storageBucket: "groupling.appspot.com",
-        messagingSenderId: "302080119462"
+        authDomain: "groupling-31262.firebaseapp.com",
+        databaseURL: "https://groupling-e1262.firebaseio.com",
+        projectId: "groupling-e1262",
+        storageBucket: "groupling-e1262.appspot.com",
+        messagingSenderId: "831827654608"
 };
 firebase.initializeApp(config);
 export default firebase;
