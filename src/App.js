@@ -4,7 +4,6 @@ import Main from './components/Main';
 import NewEvent from './components/NewEvent';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
-
 class App extends Component {
   render() {
     return (

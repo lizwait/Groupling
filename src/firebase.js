@@ -1,7 +1,10 @@
 // src/firebase.js
 import firebase from 'firebase'
+
+const API_KEY =`${process.env.REACT_APP_API_KEY_FIREBASE}`;
+
 const config = {
-        apiKey: "AIzaSyAovWN0avGkJEn8FfAjZmdydLpulKv0rp4",
+        apiKey: API_KEY,
         authDomain: "groupling.firebaseapp.com",
         databaseURL: "https://groupling.firebaseio.com",
         projectId: "groupling",
