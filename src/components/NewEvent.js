@@ -138,7 +138,7 @@ class NewEvent extends Component {
                     <h5>Please keep for trip access.</h5>
                     <div >{this.state.pin}</div>
                 </div>
-                <div id="formFormat">
+                <div id="format">
                     <div id="stay">
                         <h2>Stay</h2>
                         <form>

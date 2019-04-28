@@ -4,6 +4,20 @@ import firebase from '../firebase.js';
 import { Link } from 'react-router-dom';
 
 class Main extends Component {
+    isPinValid(pin) {
+      const itemsRef = firebase.database().ref('groups');
+      itemsRef.orderByChild("pin").equalTo(pin).on("child_added", function (snapshot) {
+        //console.log(snapshot.val());
+        return true;
+      })
+
+      return false;
+    }
+
+    handleSubmit(){
+      
+    }
+
     render() {
       return (
         <div id= "main" className= "container">
